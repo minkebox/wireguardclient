@@ -1,5 +1,5 @@
 {
-  name: `Wireguard`,
+  name: `Wireguard Peer`,
   description: `Fast, Modern, Secure VPN Tunnel`,
   image: `registry.minkebox.net/minkebox/wireguardclient`,
   tags: [ 'VPN', 'Security', 'Networking' ],
