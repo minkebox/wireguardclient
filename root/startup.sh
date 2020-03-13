@@ -4,7 +4,7 @@ HOME_INTERFACE=${__HOME_INTERFACE}
 INTERNAL_INTERFACE=${__PRIVATE_INTERFACE}
 EXTERNAL_INTERFACE=wg0
 
-ROOT=/etc/Wireguard
+ROOT=/etc/wireguard
 
 # Start Wireguard
 wg-quick up ${EXTERNAL_INTERFACE}
