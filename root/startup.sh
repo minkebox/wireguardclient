@@ -29,6 +29,10 @@ iptables -t nat -A POSTROUTING -j MASQUERADE -o ${__DEFAULT_INTERFACE}
 iptables -t nat -A POSTROUTING -j MASQUERADE -o ${__INTERNAL_INTERFACE}
 iptables -t nat -A POSTROUTING -j MASQUERADE -o ${EXTERNAL_INTERFACE}
 
+# Remove default route setup by helper
+ip route del 0.0.0.0/1
+ip route del 128.0.0.0/1
+
 # dns
 DNS=$(cat ${ROOT}/${EXTERNAL_INTERFACE}.conf | grep DNS | sed "s/^.*DNS.*=\s*\(.*\)\s*$/\\1/")
 if [ "${DNS}" != "" ]; then
