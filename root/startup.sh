@@ -27,7 +27,7 @@ iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT -i ${__DE
 # Masquarade outgoing traffic on all networks. This hides the internals of the routing from everyone.
 iptables -t nat -A POSTROUTING -j MASQUERADE -o ${__DEFAULT_INTERFACE}
 iptables -t nat -A POSTROUTING -j MASQUERADE -o ${__INTERNAL_INTERFACE}
-iptables -t nat -A POSTROUTING -j MASQUERADE -o ${HOME_INTERFACE}
+iptables -t nat -A POSTROUTING -j MASQUERADE -o ${EXTERNAL_INTERFACE}
 
 # dns
 DNS=$(cat ${ROOT}/${EXTERNAL_INTERFACE}.conf | grep DNS | sed "s/^.*DNS.*=\s*\(.*\)\s*$/\\1/")
