@@ -7,6 +7,12 @@ ROOT=/etc/wireguard
 # Start Wireguard
 wg-quick up ${EXTERNAL_INTERFACE}
 
+# Replace default monitoring
+iptables -D OUTPUT -j TX
+iptables -D INPUT -j RX
+iptables -I FORWARD -o ${EXTERNAL_INTERFACE} -j TX
+iptables -I FORWARD -i ${EXTERNAL_INTERFACE} -j RX
+
 # Create MINIUPNPD lists.
 iptables -t nat    -N MINIUPNPD
 iptables -t mangle -N MINIUPNPD
